@@ -152,7 +152,7 @@ namespace tools
       }
       assert(bool(http_login));
 
-      std::string temp = "monero-wallet-rpc." + bind_port + ".login";
+      std::string temp = "surecoin-wallet-rpc." + bind_port + ".login";
       const auto cookie = tools::create_private_file(temp);
       if (!cookie)
       {
@@ -1495,10 +1495,10 @@ int main(int argc, char** argv) {
 
   const auto vm = wallet_args::main(
     argc, argv,
-    "monero-wallet-rpc [--wallet-file=<file>|--generate-from-json=<file>] [--rpc-bind-port=<port>]",
+    "surecoin-wallet-rpc [--wallet-file=<file>|--generate-from-json=<file>] [--rpc-bind-port=<port>]",
     desc_params,
     po::positional_options_description(),
-    "monero-wallet-rpc.log",
+    "surecoin-wallet-rpc.log",
     true
   );
   if (!vm)
