@@ -149,26 +149,26 @@ namespace wallet_args
 
     if (command_line::get_arg(vm, command_line::arg_help))
     {
-      tools::msg_writer() << "Monero '" << MONERO_RELEASE_NAME << "' (v" << MONERO_VERSION_FULL << ")";
+      tools::msg_writer() << "SureCoin '" << SURECOIN_RELEASE_NAME << "' (v" << SURECOIN_VERSION_FULL << ")";
       tools::msg_writer() << wallet_args::tr("Usage:") << ' ' << usage;
       tools::msg_writer() << desc_all;
       return boost::none;
     }
     else if (command_line::get_arg(vm, command_line::arg_version))
     {
-      tools::msg_writer() << "Monero '" << MONERO_RELEASE_NAME << "' (v" << MONERO_VERSION_FULL << ")";
+      tools::msg_writer() << "SureCoin '" << SURECOIN_RELEASE_NAME << "' (v" << SURECOIN_VERSION_FULL << ")";
       return boost::none;
     }
 
     if(command_line::has_arg(vm, arg_max_concurrency))
       tools::set_max_concurrency(command_line::get_arg(vm, arg_max_concurrency));
 
-    tools::scoped_message_writer(epee::console_color_white, true) << "Monero '" << MONERO_RELEASE_NAME << "' (v" << MONERO_VERSION_FULL << ")";
+    tools::scoped_message_writer(epee::console_color_white, true) << "SureCoin '" << SURECOIN_RELEASE_NAME << "' (v" << SURECOIN_VERSION_FULL << ")";
 
     if (!vm["log-level"].defaulted())
       MINFO("Setting log level = " << command_line::get_arg(vm, arg_log_level));
     else
-      MINFO("Setting log levels = " << getenv("MONERO_LOGS"));
+      MINFO("Setting log levels = " << getenv("SURECOIN_LOGS"));
     MINFO(wallet_args::tr("Logging to: ") << log_path);
     tools::scoped_message_writer(epee::console_color_white, true) << boost::format(wallet_args::tr("Logging to %s")) % log_path;
 

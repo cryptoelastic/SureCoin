@@ -436,7 +436,7 @@ std::string get_account_address_as_str_from_url(const std::string& url, bool& dn
   std::stringstream prompt;
   prompt << tr("For URL: ") << url
          << ", " << dnssec_str << std::endl
-         << tr(" Monero Address = ") << addresses[0]
+         << tr(" SureCoin Address = ") << addresses[0]
          << std::endl
          << tr("Is this OK? (Y/n) ")
   ;  
