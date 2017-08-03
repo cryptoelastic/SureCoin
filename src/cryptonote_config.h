@@ -155,7 +155,38 @@ namespace config
       0x62, 0x7c, 0x22, 0x42, 0xa3, 0x39, 0xfc, 0x9d, 0x1f, 0x9c, 0x6d, 0xcc, 0xf4, 0x24, 0x70, 0x54
 #endif      
     } }; // Bender's nightmare
+#if 0  
   std::string const GENESIS_TX = "013c01ff0001ffffffffffff03029b2e4c0281c0b02e7c53291a94d1d0cbff8883f8024f5142ee494ffbbd08807121017767aafcde9be00dcfd098715ebcf7f410daebc582fda69d24a28e9d0bc890d1";
+#else
+  std::string const GENESIS_TX =
+      // See CNS004, table 3.1
+      //         FIELD NAME         TYPE     DESCRIPTION
+      //         ==========         ====     ===========
+      "01"    // 'version'          varint   Transaction format version
+      "3c"    // 'unlock_time'      varint   Unlock time (if less than CRYPTONOTE_MAX_BLOCK_NUMBER then interpreted as the block height at which the funds are unlocked; otherwise UNIX timestamp)
+      "01"    // 'input_num'        varint   Number of inputs, always 1 for base transactons
+      ""      // --> 'inputs'       (array of inputs, see CNS004, 3.2)
+              //     (#1 of 1 elements in the array follows)
+      "ff"    //   'input_type'     byte     Always 0xff for  base transactions
+      "00"    //   'height'         varint   Height of the block which contains the transaction
+      ""      // <-- end of array
+      "01"    // 'output_num'       varint   Number of outputs
+              //     (#1 of 1 elements in the array follows)     
+      ""      // --> 'outputs' (array of outputs, see CNS004, 3.3)
+              //   'amount'         varint   Output amount
+      "ffffffffffff03"                 // 17592186044415
+      ""      //  --> array of outputs/target (see CNS004, 3.3.1)
+      "02"    //     'output_type'  byte     Output type, 0x02 = 'txout_to_key'
+              //     'key'          pubkey   Output public key
+      "9b2e4c0281c0b02e7c53291a94d1d0cbff8883f8024f5142ee494ffbbd088071"
+      // See CSN005 for the explanation of the 'extras' byte array
+      "21"    // 'extra_size'    varint   Number of bytes in the Extra field (here 33)
+      ""      //  --> 'extras' (array of bytes)
+      "01"    //        'Tag'      byte     Sub-field tag, 0x01 means transaction public key
+              //        'Data'     pubkey   Transaction pubkey (32 bytes)
+      "7767aafcde9be00dcfd098715ebcf7f410daebc582fda69d24a28e9d0bc890d1"
+      ;
+#endif  
   uint32_t const GENESIS_NONCE = 10000;
 
   namespace testnet
