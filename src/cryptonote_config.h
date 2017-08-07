@@ -175,13 +175,21 @@ namespace config
       ""      //  --> array of outputs/target (see CNS004, 3.3.1)
       "02"    //     'output_type'  byte     Output type, 0x02 = 'txout_to_key'
               //     'key'          pubkey   Output public key
+#if 0 // Monero original
       "9b2e4c0281c0b02e7c53291a94d1d0cbff8883f8024f5142ee494ffbbd088071"
+#else
+      "7767aafcde9be00dcfd098715ebcf7f410daebc582fda69d24a28e9d0bc890d1"
+#endif
       // See CSN005 for the explanation of the 'extras' byte array
       "21"    // 'extra_size'    varint   Number of bytes in the Extra field (here 33)
       ""      //  --> 'extras' (array of bytes)
       "01"    //        'Tag'      byte     Sub-field tag, 0x01 means transaction public key
               //        'Data'     pubkey   Transaction pubkey (32 bytes)
+#if 0 // monero      
       "7767aafcde9be00dcfd098715ebcf7f410daebc582fda69d24a28e9d0bc890d1"
+#else
+      "929294c78f1737cdd06b1c0424dad34a57b7a0db8d378a6169093af3f8b0f055"
+#endif
       ;
   uint32_t const GENESIS_NONCE = 10000;
 
