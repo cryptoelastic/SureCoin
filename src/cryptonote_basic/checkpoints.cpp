@@ -207,6 +207,7 @@ namespace cryptonote
 
   bool checkpoints::load_checkpoints_from_dns(bool testnet)
   {
+#if 0 // Monero original
     std::vector<std::string> records;
 
     // All four MoneroPulse domains have DNSSEC on and valid
@@ -252,9 +253,11 @@ namespace cryptonote
         ADD_CHECKPOINT(height, hashStr);
       }
     }
+#endif    
     return true;
   }
 
+#if 0 // Unused   
   bool checkpoints::load_new_checkpoints(const std::string json_hashfile_fullpath, bool testnet, bool dns)
   {
     bool result;
@@ -267,4 +270,5 @@ namespace cryptonote
 
     return result;
   }
+#endif    
 }
