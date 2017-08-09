@@ -65,7 +65,7 @@
 
 #define NET_MAKE_IP(b1,b2,b3,b4)  ((LPARAM)(((DWORD)(b1)<<24)+((DWORD)(b2)<<16)+((DWORD)(b3)<<8)+((DWORD)(b4))))
 
-#define MIN_WANTED_SEED_NODES 12
+#define MIN_WANTED_SEED_NODES 2
 
 namespace nodetool
 {
@@ -403,22 +403,9 @@ namespace nodetool
     std::set<std::string> full_addrs;
     if (testnet)
     {
-      full_addrs.insert("212.83.175.67:28080");
-      full_addrs.insert("5.9.100.248:28080");
-      full_addrs.insert("163.172.182.165:28080");
-      full_addrs.insert("195.154.123.123:28080");
-      full_addrs.insert("212.83.172.165:28080");
     }
     else
     {
-      full_addrs.insert("107.152.130.98:18080");
-      full_addrs.insert("212.83.175.67:18080");
-      full_addrs.insert("5.9.100.248:18080");
-      full_addrs.insert("163.172.182.165:18080");
-      full_addrs.insert("161.67.132.39:18080");
-      full_addrs.insert("198.74.231.92:18080");
-      full_addrs.insert("195.154.123.123:28080");
-      full_addrs.insert("212.83.172.165:28080");
     }
     return full_addrs;
   }
@@ -501,7 +488,7 @@ namespace nodetool
         if (result.size())
         {
           for (const auto& addr_string : result)
-            full_addrs.insert(addr_string + ":18080");
+            full_addrs.insert(addr_string + ":" + std::to_string(::config::P2P_DEFAULT_PORT));
         }
         ++i;
       }
