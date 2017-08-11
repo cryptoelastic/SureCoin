@@ -85,6 +85,7 @@ static const struct {
   uint8_t threshold;
   time_t time;
 } mainnet_hard_forks[] = {
+#if 0 // Monero original    
   // version 1 from the start of the blockchain
   { 1, 1, 0, 1341378000 },
 
@@ -99,6 +100,7 @@ static const struct {
   
   // version 5 starts from block 1288616, which is on or around the 15th of April, 2017. Fork time finalised on 2017-03-14.
   { 5, 1288616, 0, 1489520158 },  
+#endif
 };
 static const uint64_t mainnet_hard_fork_version_1_till = 1009826;
 
@@ -108,6 +110,7 @@ static const struct {
   uint8_t threshold;
   time_t time;
 } testnet_hard_forks[] = {
+#if 0  //Monero original
   // version 1 from the start of the blockchain
   { 1, 1, 0, 1341378000 },
 
@@ -118,6 +121,8 @@ static const struct {
   { 3, 800500, 0, 1472415034 },
   { 4, 801219, 0, 1472415035 },
   { 5, 802660, 0, 1472415036 + 86400*180 }, // add 5 months on testnet to shut the update warning up since there's a large gap to v6
+#endif
+  
 };
 static const uint64_t testnet_hard_fork_version_1_till = 624633;
 
